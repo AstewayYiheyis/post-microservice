@@ -2,7 +2,6 @@ package com.edu.miu.eaproject.postservice.service;
 
 import com.edu.miu.eaproject.postservice.domain.Post;
 import com.edu.miu.eaproject.postservice.repository.PostRepository;
-import com.edu.miu.eaproject.postservice.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +12,7 @@ public class PostServiceImpl implements PostService {
 
     @Autowired
    private PostRepository postRepository;
+
 
     @Override
     public List<Post> getAll() {
@@ -27,6 +27,13 @@ public class PostServiceImpl implements PostService {
     public  boolean existsById(Long postId) {
         return postRepository.existsById(postId);
     }
+
+    @Override
+    public List<Post> getPostByUserId(Long id) {
+        //System.out.println("List of posts from user");
+        return postRepository.getPostByUserId(id);
+    }
+
 
     @Override
     public Post create(Post post) {
