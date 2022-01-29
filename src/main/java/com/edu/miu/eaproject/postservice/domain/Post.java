@@ -10,10 +10,10 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-    private  Long userid;
+    private Long userid;
     private String title;
     private String body;
-
+    private int likes;
 
     public Long getId() {
         return Id;
@@ -45,5 +45,27 @@ public class Post {
 
     public void setUserId(Long userId) {
         this.userid = userId;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void addLikes() {
+        likes++;
+    }
+    public void removeLikes() {
+        if(likes>0)
+            likes--;
+    }
+
+    public Post() {
+    }
+
+    public Post(Long userid, String title, String body, int likes) {
+        this.userid = userid;
+        this.title = title;
+        this.body = body;
+        this.likes = likes;
     }
 }
