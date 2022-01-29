@@ -44,5 +44,12 @@ public class PostController {
 
         postService.deleteById(id);
     }
-
+    @PutMapping("/{id}/like")
+    public void addPostLikes(@PathVariable Long id ) {
+      postService.addPostLikes(id);
+    }
+    @PutMapping("/{id}/dislike")
+    public void removePostLikes(@PathVariable Long id ) {
+        postService.removePostLikes(id);
+    }
 }

@@ -20,4 +20,8 @@ public interface PostService {
 
 
     List<Post> getPostByUserId(Long id);
+
+    void addPostLikes(Long id);
+
+    void removePostLikes(Long id);
 }

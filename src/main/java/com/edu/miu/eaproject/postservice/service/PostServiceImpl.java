@@ -11,7 +11,7 @@ import java.util.List;
 public class PostServiceImpl implements PostService {
 
     @Autowired
-   private PostRepository postRepository;
+    private PostRepository postRepository;
 
 
     @Override
@@ -20,11 +20,14 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post getById(Long PostId) {
-        return postRepository.getById(PostId);
+    public Post getById(Long postId) {
+        if (postRepository.existsById(postId))
+            return postRepository.getById(postId);
+        return null;
     }
+
     @Override
-    public  boolean existsById(Long postId) {
+    public boolean existsById(Long postId) {
         return postRepository.existsById(postId);
     }
 
@@ -39,6 +42,7 @@ public class PostServiceImpl implements PostService {
     public Post create(Post post) {
         return postRepository.save(post);
     }
+
     @Override
     public Post update(Post post) {
 
@@ -49,4 +53,25 @@ public class PostServiceImpl implements PostService {
     public void deleteById(Long PostId) {
         postRepository.deleteById(PostId);
     }
+
+    @Override
+    public void addPostLikes(Long id) {
+        Post post = getById(id);
+        if (post != null) {
+            post.addLikes();
+        }
+        postRepository.save(post);
+    }
+
+    @Override
+    public void removePostLikes(Long id) {
+        Post post = getById(id);
+        if (post != null) {
+            post.removeLikes();
+        } else
+            return;
+
+        postRepository.save(post);
+    }
+
 }
