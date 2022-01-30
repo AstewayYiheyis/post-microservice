@@ -1,4 +1,4 @@
-package com.edu.miu.eaproject.Postervice;
+package com.edu.miu.eaproject.postservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
